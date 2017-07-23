@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Build from './Build';
 
 class BuildScreen extends Component {
   componentDidMount() {
     this.props.load('develop');
-  }
-
-  constructor(props) {
-    super(props);
   }
 
   renderBuild(build) {

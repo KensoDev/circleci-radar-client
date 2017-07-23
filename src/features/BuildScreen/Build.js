@@ -1,8 +1,19 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 
 export default function Build(props) {
   function getClassName(status) {
+    if (status === "failed") {
+      return "danger";
+    }
+
+    if (status === "running") {
+      return "info";
+    }
+
+    if (status === "not_run") {
+      return "warning";
+    }
+
     return status;
   }
 
@@ -13,7 +24,18 @@ export default function Build(props) {
           { props.name }
         </div>
         <div className="panel-body">
-          { props.name }
+          <ul>
+            <li>
+              <a href={props.build_url}>
+                { props.build_num}
+              </a>
+            </li>
+            <li>
+              <a href={props.commit_url}>
+                Browse Commit
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
