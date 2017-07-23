@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './App';
+import BuildScreen from './features/BuildScreen';
 
 export default (
   <div>
-    <Route path="/" component={App}>
+    <Route path="/" component={BuildScreen}>
     </Route>
   </div>
 );

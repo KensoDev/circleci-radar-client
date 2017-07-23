@@ -1,13 +1,15 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { routerMiddleware, routerReducer as routing, push } from 'react-router-redux';
 import thunk from 'redux-thunk';
+import builds from './features/BuildScreen/Reducer';
 
 const actionCreators = {
   push
 };
 
 const reducers = {
-  routing
+  routing,
+  builds,
 };
 
 const middlewares = [ thunk ];
