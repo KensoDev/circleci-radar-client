@@ -1,5 +1,7 @@
 ## CircleCI Radar Client
 
-Mockup:
+### Screenshot
 
-![Mockup of the main screen](http://assets.avi.io/main-screen.png)
+![Screenshot](http://assets.avi.io/2017-07-22_21-v30he.png)
+
+
