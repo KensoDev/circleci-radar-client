@@ -7,7 +7,8 @@ class BuildScreen extends Component {
   }
 
   renderBuild(build) {
-    return <Build key={build.name} {...build} />
+    return <Build
+      key={build.name} {...build} />
   }
 
   render() {
