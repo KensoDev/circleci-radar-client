@@ -10,3 +10,20 @@ export function fetchBuildStatus(branchName) {
     });
   }
 }
+
+export function rebuild(name, buildNum) {
+  return function(dispatch) {
+    const data = {
+      name,
+      buildNum
+    }
+
+    fetch('http://localhost:4040/api/projects/rebuild',{
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+  }
+}

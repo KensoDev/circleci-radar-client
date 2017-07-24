@@ -46,7 +46,7 @@ export default function Build(props) {
           <a href={props.build_url}>
             #{props.build_num}
           </a>
-          <a href="" title="Rebuild">
+          <a title="Rebuild" onClick={ () => props.rebuildFunc(props.name, props.build_num) }>
             <span className="glyphicon glyphicon-refresh"></span>
           </a>
         </p>

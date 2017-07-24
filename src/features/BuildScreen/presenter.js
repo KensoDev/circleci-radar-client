@@ -33,6 +33,7 @@ class BuildScreen extends Component {
 
   renderBuild(build) {
     return <Build
+      rebuildFunc={this.props.rebuild}
       key={build.name} {...build} />
   }
 
