@@ -4,6 +4,7 @@ import Build from './Build';
 import './style.css';
 
 class BuildScreen extends Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -39,7 +40,7 @@ class BuildScreen extends Component {
     return (
       <div className="buildsContainer">
         <div className="row">
-          <div className="col-lg-6">
+          <div className="col-lg-12">
             <div className="input-group">
               <input type="text"
                 ref="branchName"
@@ -53,7 +54,7 @@ class BuildScreen extends Component {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="builds">
           { this.props.builds.map((build) => {
             return this.renderBuild(build)
           }) }

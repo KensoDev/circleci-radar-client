@@ -17,26 +17,51 @@ export default function Build(props) {
     return status;
   }
 
+  function getIconName(status) {
+    if (status === "failed") {
+      return "remove";
+    }
+
+    if (status === "running") {
+      return "play"
+    }
+
+    if (status === "not_run") {
+      return "ban";
+    }
+
+    return "ok";
+  }
+
   return(
-    <div className="col-xs-3">
-      <div className={`panel panel-${getClassName(props.status)}`}>
-        <div className="panel-heading">
-          { props.name }
+    <div className="build">
+      <div className={`status status-${getClassName(props.status)}`}>
+        <span title={props.status} className={`glyphicon glyphicon-${getIconName(props.status)}-circle`} 
+          aria-hidden="true">
+        </span>
+      </div>
+      <div className="details">
+        <p className="title">
+          {props.org}/{ props.name }
+          <a href={props.build_url}>
+            #{props.build_num}
+          </a>
+          <a href="" title="Rebuild">
+            <span className="glyphicon glyphicon-refresh"></span>
+          </a>
+        </p>
+        <p className="user">
+          <img width="20" src={props.user.avatar_url} />
+          <label>{ props.user.name || props.user.login }</label>
+        </p>
+        <div className="subject">
+          { props.subject }
         </div>
-        <div className="panel-body">
-          <ul>
-            <li>
-              <a href={props.build_url}>
-                { props.build_num}
-              </a>
-            </li>
-            <li>
-              <a href={props.commit_url}>
-                Browse Commit
-              </a>
-            </li>
-          </ul>
-        </div>
+        <p className="revision">
+          <a href={`${props.vcs_url}/commit/${props.vcs_revision}`} target="_blank">
+            {props.vcs_revision}
+          </a>
+        </p>
       </div>
     </div>
   );
