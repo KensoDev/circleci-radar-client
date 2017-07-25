@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { rebuild, fetchBuildStatus } from './Actions';
-import BuildScreen from './presenter';
+import React from 'react'
+import { connect } from 'react-redux'
+import { rebuild, fetchBuildStatus } from './Actions'
+import BuildScreen from './presenter'
 
 function mapStateToProps(state) {
-  const { builds } = state;
+  const { builds } = state
 
   return {
     builds,
@@ -13,13 +13,13 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    load: (branchName) => {
+    load: branchName => {
       dispatch(fetchBuildStatus(branchName))
     },
     rebuild: (name, buildNum) => {
       dispatch(rebuild(name, buildNum))
-    }
-  };
+    },
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuildScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(BuildScreen)

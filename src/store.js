@@ -1,33 +1,33 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import { routerMiddleware, routerReducer as routing, push } from 'react-router-redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
+import { routerMiddleware, routerReducer as routing, push } from 'react-router-redux'
 
-import thunk from 'redux-thunk';
-import builds from './features/BuildScreen/Reducer';
-import envVars from './features/EnvVars/Reducer';
+import thunk from 'redux-thunk'
+import builds from './features/BuildScreen/Reducer'
+import envVars from './features/EnvVars/Reducer'
 
 const actionCreators = {
-  push
-};
+  push,
+}
 
 const reducers = {
   routing,
   builds,
   envVars,
-};
+}
 
-const middlewares = [ thunk ];
+const middlewares = [thunk]
 
 const composeEnhancers = (() => {
-  const compose_ = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-  if(process.env.NODE_ENV === 'development' && compose_) {
-    return compose_({ actionCreators });
+  const compose_ = window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  if (process.env.NODE_ENV === 'development' && compose_) {
+    return compose_({ actionCreators })
   }
-  return compose;
-})();
+  return compose
+})()
 
 export default function configureStore(initialState) {
-  const enhancer = composeEnhancers(applyMiddleware(...middlewares));
-  const rootReducer = combineReducers(reducers);
+  const enhancer = composeEnhancers(applyMiddleware(...middlewares))
+  const rootReducer = combineReducers(reducers)
 
-  return createStore(rootReducer, initialState, enhancer);
+  return createStore(rootReducer, initialState, enhancer)
 }

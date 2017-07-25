@@ -1,65 +1,67 @@
-import React from 'react';
+import React from 'react'
 
 export default function Build(props) {
   function getClassName(status) {
-    if (status === "failed") {
-      return "danger";
+    if (status === 'failed') {
+      return 'danger'
     }
 
-    if (status === "running") {
-      return "info";
+    if (status === 'running') {
+      return 'info'
     }
 
-    if (status === "not_run") {
-      return "warning";
+    if (status === 'not_run') {
+      return 'warning'
     }
 
-    if(status === "fixed") {
-      return "success"
+    if (status === 'fixed') {
+      return 'success'
     }
 
-    return status;
+    return status
   }
 
   function getIconName(status) {
-    if (status === "failed") {
-      return "remove";
+    if (status === 'failed') {
+      return 'remove'
     }
 
-    if (status === "running") {
-      return "play"
+    if (status === 'running') {
+      return 'play'
     }
 
-    if (status === "not_run") {
-      return "ban";
+    if (status === 'not_run') {
+      return 'ban'
     }
 
-    return "ok";
+    return 'ok'
   }
 
-  return(
+  return (
     <div className="build">
       <div className={`status status-${getClassName(props.status)}`}>
-        <span title={props.status} className={`glyphicon glyphicon-${getIconName(props.status)}-circle`} 
-          aria-hidden="true">
-        </span>
+        <span
+          title={props.status}
+          className={`glyphicon glyphicon-${getIconName(props.status)}-circle`}
+          aria-hidden="true"
+        />
       </div>
       <div className="details">
         <p className="title">
-          {props.org}/{ props.name }
-          <a href={props.build_url}>
-            #{props.build_num}
-          </a>
-          <a title="Rebuild" onClick={ () => props.rebuildFunc(props.name, props.build_num) }>
-            <span className="glyphicon glyphicon-refresh"></span>
+          {props.org}/{props.name}
+          <a href={props.build_url}>#{props.build_num}</a>
+          <a title="Rebuild" onClick={() => props.rebuildFunc(props.name, props.build_num)}>
+            <span className="glyphicon glyphicon-refresh" />
           </a>
         </p>
         <p className="user">
           <img width="20" src={props.user.avatar_url} />
-          <label>{ props.user.name || props.user.login }</label>
+          <label>
+            {props.user.name || props.user.login}
+          </label>
         </p>
         <div className="subject">
-          { props.subject }
+          {props.subject}
         </div>
         <p className="revision">
           <a href={`${props.vcs_url}/commit/${props.vcs_revision}`} target="_blank">
@@ -68,6 +70,5 @@ export default function Build(props) {
         </p>
       </div>
     </div>
-  );
+  )
 }
-
