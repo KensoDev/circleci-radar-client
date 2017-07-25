@@ -6,7 +6,7 @@ export function loadEnvVars(envVarName) {
       loading: true
     })
 
-    fetch(`https://52bca464.ngrok.io/api/projects/envVars?name=${envVarName}`).then(res => res.json()).then((results) => {
+    fetch(`http://localhost:4040/api/projects/envVars?name=${envVarName}`).then(res => res.json()).then((results) => {
       dispatch({
         type: "LOADED_ENV_VARS",
         vars: results,
@@ -27,7 +27,7 @@ export function updateEnvVars(envVarName, envVarValue) {
       value: envVarValue,
     }
 
-    fetch(`https://52bca464.ngrok.io/api/projects/envVars`, {
+    fetch(`http://localhost:4040/api/projects/envVars`, {
       headers: {
         'Content-Type': 'application/json'
       },
