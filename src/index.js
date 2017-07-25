@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store';
 import routes from './routes';
+import App from './App';
 
 const initialState = {};
 const store = configureStore(initialState);
@@ -16,7 +17,9 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      {routes}
+      <App>
+        {routes}
+      </App>
     </BrowserRouter>
   </Provider>,
   rootElement

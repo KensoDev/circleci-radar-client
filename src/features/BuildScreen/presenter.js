@@ -39,7 +39,7 @@ class BuildScreen extends Component {
 
   render() {
     return (
-      <div className="buildsContainer">
+      <div className="appContainer">
         <div className="row">
           <div className="col-lg-12">
             <div className="input-group">

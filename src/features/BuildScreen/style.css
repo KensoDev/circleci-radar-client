@@ -2,14 +2,6 @@ body {
   background-color: #eeede8;
 }
 
-.buildsContainer {
-  padding: 20px
-}
-
-.buildsContainer .row {
-  padding-bottom: 10px;
-}
-
 .builds {
   display: flex;
   flex-direction: row;
