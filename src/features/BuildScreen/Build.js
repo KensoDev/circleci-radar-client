@@ -14,6 +14,10 @@ export default function Build(props) {
       return "warning";
     }
 
+    if(status === "fixed") {
+      return "success"
+    }
+
     return status;
   }
 

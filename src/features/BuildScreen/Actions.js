@@ -2,7 +2,7 @@ import { NEW_BUILDS } from './ActionTypes';
 
 export function fetchBuildStatus(branchName) {
   return function(dispatch) {
-    fetch(`http://localhost:4040/api/projects/builds?branchName=${branchName}`).then(res => res.json()).then((results) => {
+    fetch(`https://52bca464.ngrok.io/api/projects/builds?branchName=${branchName}`).then(res => res.json()).then((results) => {
       dispatch({
         type: NEW_BUILDS,
         builds: results,
@@ -18,7 +18,7 @@ export function rebuild(name, buildNum) {
       buildNum
     }
 
-    fetch('http://localhost:4040/api/projects/rebuild',{
+    fetch('https://52bca464.ngrok.io/api/projects/rebuild',{
       headers: {
         'Content-Type': 'application/json'
       },

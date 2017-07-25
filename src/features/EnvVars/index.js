@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EnvVars from './presenter';
-import { loadEnvVars } from './Actions';
-
+import { updateEnvVars, loadEnvVars } from './Actions';
 
 function mapStateToProps(state) {
   const { loading, vars } = state.envVars;
@@ -17,7 +16,10 @@ function mapDispatchToProps(dispatch) {
   return {
     loadEnvVars: (envVarName) => {
       dispatch(loadEnvVars(envVarName))
-    }
+    },
+    updateEnvVars: (envVarName, envVarValue) => {
+      dispatch(updateEnvVars(envVarName, envVarValue))
+    },
   };
 }
 

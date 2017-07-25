@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom'
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
+  }
+
+  getPathClassName(path) {
+    if (this.props.location.pathname === path) {
+      return "active";
+    }
+    return ""
   }
 
   render() {
@@ -22,8 +30,8 @@ class Navbar extends Component {
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a href="/">Builds</a></li>
-              <li><a href="/env">Env Var updates</a></li>
+              <li className={this.getPathClassName('/')}><Link to="/">Builds</Link></li>
+              <li className={this.getPathClassName('/env')}><Link to="/env">Env Var updates</Link></li>
             </ul>
           </div>
         </div>

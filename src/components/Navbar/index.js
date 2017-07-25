@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Navbar from './presenter';
+import { withRouter  } from 'react-router'
 
 function mapStateToProps(state) {
   return {
@@ -12,5 +13,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));
 

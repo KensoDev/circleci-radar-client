@@ -14,10 +14,15 @@ class EnvVars extends Component {
   }
 
   render() {
-    let buttonText = "Search"
-
+    let buttonText = "Check Values"
     if (this.props.loading) {
       buttonText = "loading..."
+    }
+
+    let updateButtonText = "Update Value"
+
+    if (this.props.loading) {
+      updateButtonText = "loading..."
     }
 
     return (
@@ -34,6 +39,20 @@ class EnvVars extends Component {
                   disabled={this.props.loading}
                   onClick={ () => this.props.loadEnvVars(this.refs.envVarName.value) }
                   className="btn btn-default" type="button">{ buttonText }</button>
+              </span>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="input-group">
+              <input type="text"
+                ref="envVarValue"
+                className="form-control"
+                placeholder="Update the value of the env var for all projects" />
+              <span className="input-group-btn">
+                <button
+                  disabled={this.props.loading}
+                  onClick={ () => this.props.updateEnvVars(this.refs.envVarName.value, this.refs.envVarValue.value) }
+                  className="btn btn-default" type="button">{ updateButtonText }</button>
               </span>
             </div>
           </div>

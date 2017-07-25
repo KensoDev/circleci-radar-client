@@ -6,8 +6,8 @@ const initialState = {
 export default function (state = initialState, action) {
   if (action.type === "LOADING_ENV_VARS") {
     return {
-      loading: true,
-      vars: []
+      loading: action.loading || true,
+      vars: state.vars,
     }
   }
 

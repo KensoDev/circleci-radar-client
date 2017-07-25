@@ -3,9 +3,10 @@ import { Route, IndexRoute } from 'react-router';
 
 import BuildScreen from './features/BuildScreen';
 import EnvVars from './features/EnvVars';
+import App from './App';
 
 export default (
-  <div>
+  <App>
     <Route path="/env"
       component={EnvVars}>
     </Route>
@@ -13,5 +14,5 @@ export default (
       exact={true}
       component={BuildScreen}>
     </Route>
-  </div>
+  </App>
 );
