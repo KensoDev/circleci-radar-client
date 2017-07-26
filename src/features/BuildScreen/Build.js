@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-export default function Build(props) {
-  function getClassName(status) {
+class Build extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rebuild: false,
+    }
+  }
+
+  getClassName(status) {
     if (status === 'failed') {
       return 'danger'
     }
@@ -21,7 +28,25 @@ export default function Build(props) {
     return status
   }
 
-  function getIconName(status) {
+  getButtonAnimationClass() {
+    if (this.state.rebuild === true) {
+      return "rebuildButtonSpin"
+    }
+
+    if (this.props.status === "running") {
+      return "hidden"
+    }
+
+    return ""
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps !== this.props) {
+      this.setState({ rebuild: false  });
+    }
+  }
+
+  getIconName(status) {
     if (status === 'failed') {
       return 'remove'
     }
@@ -37,38 +62,48 @@ export default function Build(props) {
     return 'ok'
   }
 
-  return (
-    <div className="build">
-      <div className={`status status-${getClassName(props.status)}`}>
-        <span
-          title={props.status}
-          className={`glyphicon glyphicon-${getIconName(props.status)}-circle`}
-          aria-hidden="true"
-        />
-      </div>
-      <div className="details">
-        <p className="title">
-          {props.org}/{props.name}
-          <a href={props.build_url}>#{props.build_num}</a>
-          <a title="Rebuild" onClick={() => props.rebuildFunc(props.name, props.build_num)}>
-            <span className="glyphicon glyphicon-refresh" />
-          </a>
-        </p>
-        <p className="user">
-          <img width="20" src={props.user.avatar_url} />
-          <label>
-            {props.user.name || props.user.login}
-          </label>
-        </p>
-        <div className="subject">
-          {props.subject}
+  rebuild() {
+    this.setState({ rebuild: true });
+    this.props.rebuildFunc(this.props.name, this.props.build_num, this.props.branch);
+  }
+
+  render() {
+    return (
+      <div className="build">
+        <div className={`status status-${this.getClassName(this.props.status)}`}>
+          <span
+            title={this.props.status}
+            className={`glyphicon glyphicon-${this.getIconName(this.props.status)}-circle`}
+            aria-hidden="true"
+          />
         </div>
-        <p className="revision">
-          <a href={`${props.vcs_url}/commit/${props.vcs_revision}`} target="_blank">
-            {props.vcs_revision}
-          </a>
-        </p>
+        <div className="details">
+          <p className="title">
+            {this.props.org}/{this.props.name}
+            <a href={this.props.build_url}>#{this.props.build_num}</a>
+            <a title="Rebuild" onClick={() => this.rebuild() }>
+              <span
+                className={`${this.getButtonAnimationClass()} rebuildButton glyphicon glyphicon-refresh`} />
+            </a>
+          </p>
+          <p className="user">
+            <img width="20" src={this.props.user.avatar_url} />
+            <label>
+              {this.props.user.name || this.props.user.login}
+            </label>
+          </p>
+          <div className="subject">
+            {this.props.subject}
+          </div>
+          <p className="revision">
+            <a href={`${this.props.vcs_url}/commit/${this.props.vcs_revision}`} target="_blank">
+              {this.props.vcs_revision}
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
-  )
+    );
+  }
 }
+
+export default Build;

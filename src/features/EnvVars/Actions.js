@@ -39,6 +39,8 @@ export function updateEnvVars(envVarName, envVarValue) {
           type: 'LOADING_ENV_VARS',
           loading: false,
         })
+
+        dispatch(loadEnvVars(envVarName));
       })
   }
 }

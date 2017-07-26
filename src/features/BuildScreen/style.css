@@ -11,8 +11,8 @@ body {
 .build {
   display: flex;
   width: 270px;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  margin-right: 20px;
+  margin-bottom: 20px;
   background-color: #fefefe;
   height: 130px;
   text-align: left;
@@ -85,3 +85,21 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.rebuild {
+  margin-top: 20px;
+}
+
+.rebuildButton {
+  cursor: pointer;
+}
+
+.rebuildButtonSpin {
+  animation: BuildSpin infinite 10s linear;
+}
+
+@keyframes BuildSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+

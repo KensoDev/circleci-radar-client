@@ -6,7 +6,7 @@ const initialState = {
 export default function(state = initialState, action) {
   if (action.type === 'LOADING_ENV_VARS') {
     return {
-      loading: action.loading || true,
+      loading: action.loading,
       vars: state.vars,
     }
   }
@@ -17,5 +17,6 @@ export default function(state = initialState, action) {
       vars: action.vars,
     }
   }
+
   return state
 }
