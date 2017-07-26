@@ -19,9 +19,9 @@ function mapDispatchToProps(dispatch) {
     rebuild: (name, buildNum, branchName) => {
       dispatch(rebuild(name, buildNum, branchName))
     },
-    rebuildAll: (branchName) => {
+    rebuildAll: branchName => {
       dispatch(rebuildAll(branchName))
-    }
+    },
   }
 }
 

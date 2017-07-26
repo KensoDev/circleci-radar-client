@@ -34,18 +34,15 @@ class BuildScreen extends Component {
   }
 
   rebuildAll() {
-    const confirmation = window.confirm("Are you sure? This is going to trigger a full rebuild for all projects");
+    const confirmation = window.confirm('Are you sure? This is going to trigger a full rebuild for all projects')
 
     if (confirmation) {
-      this.props.rebuildAll(this.state.branchName);
+      this.props.rebuildAll(this.state.branchName)
     }
   }
 
   renderBuild(build) {
-    return <Build
-      rebuildFunc={this.props.rebuild}
-      key={build.name}
-      {...build} />
+    return <Build rebuildFunc={this.props.rebuild} key={build.name} {...build} />
   }
 
   render() {
@@ -77,13 +74,10 @@ class BuildScreen extends Component {
         </div>
 
         <div className="rebuild">
-          <button
-            onClick={ () => this.rebuildAll() }
-            className="btn-lg btn-danger">
-            Rebuild All for { this.state.branchName }
+          <button onClick={() => this.rebuildAll()} className="btn-lg btn-danger">
+            Rebuild All for {this.state.branchName}
           </button>
         </div>
-
       </div>
     )
   }

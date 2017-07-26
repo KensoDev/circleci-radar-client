@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Build extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       rebuild: false,
     }
@@ -30,19 +30,19 @@ class Build extends Component {
 
   getButtonAnimationClass() {
     if (this.state.rebuild === true) {
-      return "rebuildButtonSpin"
+      return 'rebuildButtonSpin'
     }
 
-    if (this.props.status === "running") {
-      return "hidden"
+    if (this.props.status === 'running') {
+      return 'hidden'
     }
 
-    return ""
+    return ''
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
-      this.setState({ rebuild: false  });
+      this.setState({ rebuild: false })
     }
   }
 
@@ -63,8 +63,8 @@ class Build extends Component {
   }
 
   rebuild() {
-    this.setState({ rebuild: true });
-    this.props.rebuildFunc(this.props.name, this.props.build_num, this.props.branch);
+    this.setState({ rebuild: true })
+    this.props.rebuildFunc(this.props.name, this.props.build_num, this.props.branch)
   }
 
   render() {
@@ -81,9 +81,8 @@ class Build extends Component {
           <p className="title">
             {this.props.org}/{this.props.name}
             <a href={this.props.build_url}>#{this.props.build_num}</a>
-            <a title="Rebuild" onClick={() => this.rebuild() }>
-              <span
-                className={`${this.getButtonAnimationClass()} rebuildButton glyphicon glyphicon-refresh`} />
+            <a title="Rebuild" onClick={() => this.rebuild()}>
+              <span className={`${this.getButtonAnimationClass()} rebuildButton glyphicon glyphicon-refresh`} />
             </a>
           </p>
           <p className="user">
@@ -102,8 +101,8 @@ class Build extends Component {
           </p>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Build;
+export default Build

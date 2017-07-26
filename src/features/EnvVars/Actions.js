@@ -40,7 +40,7 @@ export function updateEnvVars(envVarName, envVarValue) {
           loading: false,
         })
 
-        dispatch(loadEnvVars(envVarName));
+        dispatch(loadEnvVars(envVarName))
       })
   }
 }
