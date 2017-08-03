@@ -2,8 +2,11 @@ import { NEW_BUILDS } from './ActionTypes'
 
 export function fetchBuildStatus(branchName) {
   return function(dispatch) {
-    fetch(`http://localhost:4040/api/projects/builds?branchName=${branchName}`)
-      .then(res => res.json())
+    console.log("Calling builds");
+
+    fetch(`/api/projects/builds?branchName=${branchName}`, {
+      credentials: 'include'
+    }).then(res => res.json())
       .then(results => {
         dispatch({
           type: NEW_BUILDS,
@@ -20,7 +23,8 @@ export function rebuild(name, buildNum, branchName) {
       buildNum,
     }
 
-    fetch('http://localhost:4040/api/projects/rebuild', {
+    fetch('/api/projects/rebuild', {
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -45,7 +49,8 @@ export function rebuildAll(name) {
       name,
     }
 
-    fetch('http://localhost:4040/api/projects/rebuildAll', {
+    fetch('/api/projects/rebuildAll', {
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },

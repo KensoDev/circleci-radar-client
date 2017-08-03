@@ -26,7 +26,7 @@ export function updateEnvVars(envVarName, envVarValue) {
       value: envVarValue,
     }
 
-    fetch(`http://localhost:4040/api/projects/envVars`, {
+    fetch(`/api/projects/envVars`, {
       headers: {
         'Content-Type': 'application/json',
       },
