@@ -5,7 +5,9 @@ export function loadEnvVars(envVarName) {
       loading: true,
     })
 
-    fetch(`http://localhost:4040/api/projects/envVars?name=${envVarName}`).then(res => res.json()).then(results => {
+    fetch(`/api/projects/envVars?name=${envVarName}`, {
+      credentials: 'include',
+    }).then(res => res.json()).then(results => {
       dispatch({
         type: 'LOADED_ENV_VARS',
         vars: results,
@@ -27,6 +29,7 @@ export function updateEnvVars(envVarName, envVarValue) {
     }
 
     fetch(`/api/projects/envVars`, {
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
